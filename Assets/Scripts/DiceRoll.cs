@@ -16,7 +16,7 @@ public class DiceRoll : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-         rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         rb.useGravity = false;
     }
