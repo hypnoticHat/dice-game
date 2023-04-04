@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerMoverment : MonoBehaviour
 {
+    // GameObject Player = GameObject.Find("Player");
+    // GameObject Cylinder = Player.transform.GetChild(0).gameObject;
+    // public Score score;    
+
     public Route CurrentRoute;
     int routePosition;
     public int steps;
@@ -18,6 +22,12 @@ public class PlayerMoverment : MonoBehaviour
     {
         DiceRoll = Dice.GetComponent<DiceRoll>();
     }
+
+    // void Awake()
+    // {
+    //     check = Cylinder.GetComponent<CapsuleCollider>;
+    // }
+
     private void Update()
     {
         //geting values from dice and start moving base on those values
@@ -27,6 +37,7 @@ public class PlayerMoverment : MonoBehaviour
             Debug.Log("run "+steps);
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
+            // score.AddScore(1);
 
         }
     }
@@ -74,4 +85,21 @@ public class PlayerMoverment : MonoBehaviour
             routePosition = 12;
         }
     }
+}
+
+    // void OnTriggerEnter(Collider other) {
+    //     if (other.gameObject.CompareTag("Point")) 
+    //     {
+    //         score.AddScore(1);
+    //         Debug.Log("+");
+    //     }       
+    // } 
+    // private void OnCollisionEnter(Collision other) {
+    //     if (other.gameObject.layer == LayerMask.NameToLayer("Point")) 
+    //     {
+    //         score.AddScore(1);
+    //         Debug.Log("+");
+    //     }       
+    // } 
+
 }
