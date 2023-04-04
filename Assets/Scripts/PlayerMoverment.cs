@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class PlayerMoverment : MonoBehaviour
 {
+    // GameObject Player = GameObject.Find("Player");
+    // GameObject Cylinder = Player.transform.GetChild(0).gameObject;
+    // public Score score;    
+
     public Route CurrentRoute;
     int routePosition;
     public int steps;
     bool isMoving;
+
+    // void Awake()
+    // {
+    //     check = Cylinder.GetComponent<CapsuleCollider>;
+    // }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && !isMoving)
@@ -16,6 +26,7 @@ public class PlayerMoverment : MonoBehaviour
             Debug.Log(steps);
 
             StartCoroutine(Move());
+            // score.AddScore(1);
 
             //not for loot route
             /*if (routePosition + steps < CurrentRoute.childNodeList.Count)
@@ -60,4 +71,21 @@ public class PlayerMoverment : MonoBehaviour
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 6f * Time.deltaTime));
     }
+
+
+    // void OnTriggerEnter(Collider other) {
+    //     if (other.gameObject.CompareTag("Point")) 
+    //     {
+    //         score.AddScore(1);
+    //         Debug.Log("+");
+    //     }       
+    // } 
+    // private void OnCollisionEnter(Collision other) {
+    //     if (other.gameObject.layer == LayerMask.NameToLayer("Point")) 
+    //     {
+    //         score.AddScore(1);
+    //         Debug.Log("+");
+    //     }       
+    // } 
+
 }
