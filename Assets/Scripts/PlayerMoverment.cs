@@ -6,16 +6,17 @@ public class PlayerMoverment : MonoBehaviour
 {
     // GameObject Player = GameObject.Find("Player");
     // GameObject Cylinder = Player.transform.GetChild(0).gameObject;
-    // public Score score;    
+    // GetComponent<Collider>().enabled = false; 
+    public GameObject point;
 
     public Route CurrentRoute;
     int routePosition;
     public int steps;
     bool isMoving;
 
-    // void Awake()
+    // void Start()
     // {
-    //     check = Cylinder.GetComponent<CapsuleCollider>;
+    //     Collider collider = ColliderTransform.GetChild(0).GetComponent<Collider>();
     // }
 
     private void Update()
@@ -26,8 +27,11 @@ public class PlayerMoverment : MonoBehaviour
             Debug.Log(steps);
 
             StartCoroutine(Move());
-            // score.AddScore(1);
 
+            if (point != null){
+                point.GetComponent<Collider>().enabled = false; 
+            }
+            
             //not for loot route
             /*if (routePosition + steps < CurrentRoute.childNodeList.Count)
             {
@@ -37,7 +41,12 @@ public class PlayerMoverment : MonoBehaviour
             {
                 Debug.Log("Roll number is to high");
             }*/
+  
         }
+        if (point != null && !isMoving){
+            point.GetComponent<Collider>().enabled = true; 
+        } 
+        
     }
 
     IEnumerator Move()

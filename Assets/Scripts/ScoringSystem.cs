@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoringSystem : MonoBehaviour
 {
-    public GameObject scoreText;
+    public TextMeshProUGUI scoreText;
     public int theScore;
     // public AudioSource collectSound;
 
@@ -13,7 +14,8 @@ public class ScoringSystem : MonoBehaviour
     {
         // collectSound.Play();
         theScore += 1;
-        scoreText.GetComponent<Text>().text = "SCORE: "+ theScore;
+        scoreText.text = theScore.ToString();
         Destroy(gameObject);
+        UnityEngine.Debug.Log("Ok");
     }
 }
