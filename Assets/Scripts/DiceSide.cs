@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DiceSide : MonoBehaviour
 {
+
     bool onGround;
     public int sideValue;
 
+    //if hit ground
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Ground")
@@ -15,6 +17,7 @@ public class DiceSide : MonoBehaviour
         }
     }
 
+    //if it bound out of ground
     private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Ground")
@@ -23,6 +26,7 @@ public class DiceSide : MonoBehaviour
         }
     }
 
+    //return the stagement of the dice
     public bool OnGround()
     {
         return onGround;

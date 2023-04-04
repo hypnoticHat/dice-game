@@ -8,27 +8,30 @@ public class PlayerMoverment : MonoBehaviour
     int routePosition;
     public int steps;
     bool isMoving;
+    string currentNode;
+
+    //geting dice values
+    public GameObject Dice;
+    DiceRoll DiceRoll;
+
+    private void Start()
+    {
+        DiceRoll = Dice.GetComponent<DiceRoll>();
+    }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isMoving)
+        //geting values from dice and start moving base on those values
+        if(DiceRoll.GetedValue && !isMoving)
         {
-            steps = Random.Range(1, 7);
-            Debug.Log(steps);
-
+            steps = DiceRoll.diceValue;
+            Debug.Log("run "+steps);
             StartCoroutine(Move());
+            DiceRoll.GetedValue = false;
 
-            //not for loot route
-            /*if (routePosition + steps < CurrentRoute.childNodeList.Count)
-            {
-                StartCoroutine(Move());
-            }
-            else
-            {
-                Debug.Log("Roll number is to high");
-            }*/
         }
     }
 
+    //create movement for frame
     IEnumerator Move()
     {
         if (isMoving)
@@ -41,7 +44,6 @@ public class PlayerMoverment : MonoBehaviour
         {
             routePosition++;
             routePosition %= CurrentRoute.childNodeList.Count;
-
             Vector3 nextPos = CurrentRoute.childNodeList[routePosition].position;
             while (MoveToNextNode(nextPos))
             {
@@ -50,14 +52,26 @@ public class PlayerMoverment : MonoBehaviour
                 
             yield return new WaitForSeconds(0.1f);
             steps--;
-            //routePosition++;
         }
-
+        currentNode = CurrentRoute.childNodeList[routePosition].ToString();
         isMoving = false;
+        //return current node name
+        specialNoded(currentNode.Split(" ")[0]);
     }
 
+    //move to the position base on dice
     bool MoveToNextNode(Vector3 goal)
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 6f * Time.deltaTime));
+    }
+
+    //special node 
+    void specialNoded(string currenNode) 
+    {
+        //telephot if player hit this node * need to fix *
+        if (currenNode == "Telephot")
+        {
+            routePosition = 12;
+        }
     }
 }

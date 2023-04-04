@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Route : MonoBehaviour
 {
+    //detect and create node
     Transform[] childObject;
     public List<Transform> childNodeList = new List<Transform>();
 
+    //draw a line conect each child node
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -22,7 +24,10 @@ public class Route : MonoBehaviour
                 Gizmos.DrawLine(prevPos,CurrentPos);
             }
         }
+
     }
+
+    //auto find and fill child node into Route
     void FillNodes()
     {
         childNodeList.Clear();

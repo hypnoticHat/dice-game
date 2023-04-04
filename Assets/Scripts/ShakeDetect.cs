@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//use for testing so you dont need to focus on this
+
     [RequireComponent(typeof(DiceContrioller))]
 public class ShakeDetect : MonoBehaviour
 {

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DiceRoll : MonoBehaviour
 {
@@ -8,6 +7,8 @@ public class DiceRoll : MonoBehaviour
     bool hasLanded;
     bool thrown;
     Vector3 accelerationDir;
+    public bool GetedValue;
+    public TMP_Text DiceNum;
 
     public DiceSide[] diceSides;
     Vector3 initPosition;
@@ -16,20 +17,23 @@ public class DiceRoll : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-         rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         rb.useGravity = false;
     }
 
     void Update()   
     {
+        //geting shake phone motion
         accelerationDir = Input.acceleration;
 
-        if (accelerationDir.sqrMagnitude >=5f)
+        //if shake >= 5f or geting space key
+        if (accelerationDir.sqrMagnitude >=5f || Input.GetKeyDown(KeyCode.Space))
         {
             RollDice();
 
         }
+        //if the dice finish roll and landed
         if(rb.IsSleeping() && !hasLanded && thrown)
         {
             hasLanded = true;
@@ -39,9 +43,10 @@ public class DiceRoll : MonoBehaviour
             sideValueCheck();
 
         }
+        //if something wrong happen when the dice rolling
         else if (rb.IsSleeping() && hasLanded && diceValue== 0)
         {
-            RollAgain();
+            Reset();
         }
     }
 
@@ -55,10 +60,11 @@ public class DiceRoll : MonoBehaviour
         }
         else if(thrown && hasLanded)
         {
-            Reset();
+            RollAgain();
         }
     }
 
+    //reset dice posiotion and make it throwable
     private void Reset()
     {
         transform.position = initPosition;
@@ -68,6 +74,7 @@ public class DiceRoll : MonoBehaviour
         rb.isKinematic= false;  
     }
 
+    //rollagain
     void RollAgain()
     {
         Reset();
@@ -76,15 +83,19 @@ public class DiceRoll : MonoBehaviour
         rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
     }
 
+    //check number of each face
     void sideValueCheck()
     {
         diceValue = 0;
+        //run thru side and check which one is on ground
         foreach (DiceSide side in diceSides)
         {
+            //if face hit grouond and stop the player get values and dice number change
             if (side.OnGround())
             {
                 diceValue = side.sideValue;
-                Debug.Log(diceValue); 
+                DiceNum.text = diceValue.ToString();
+                GetedValue = true;
             }
         }
     }
