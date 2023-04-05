@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMoverment : MonoBehaviour
 {
-
-    public GameObject point;
+    public GameObject cylinderCollision;
+    // public GameObject point;
 
     public Route CurrentRoute;
     int routePosition;
@@ -22,28 +22,27 @@ public class PlayerMoverment : MonoBehaviour
     private void Start()
     {
         DiceRoll = Dice.GetComponent<DiceRoll>();
+         
+
     }
 
-    // void Start()
-    // {
-    //     Collider collider = ColliderTransform.GetChild(0).GetComponent<Collider>();
-    // }
 
     private void Update()
     {
         //geting values from dice and start moving base on those values
         if(DiceRoll.GetedValue && !isMoving)
         {
+            
+
             steps = DiceRoll.diceValue;
             Debug.Log("run "+steps);
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
-            // score.AddScore(1);
 
-
-            if (point != null){
-                point.GetComponent<Collider>().enabled = false; 
-            }
+            cylinderCollision.GetComponent<Collider>().enabled = false;
+            // if (point != null){
+            //     point.GetComponent<Collider>().enabled = false; 
+            // }
             
             //not for loot route
             /*if (routePosition + steps < CurrentRoute.childNodeList.Count)
@@ -56,9 +55,14 @@ public class PlayerMoverment : MonoBehaviour
             }*/
   
         }
-        if (point != null && !isMoving){
-            point.GetComponent<Collider>().enabled = true; 
-        } 
+        if (!isMoving){
+            // point.GetComponent<Collider>().enabled = true;
+        //     cylinderCollision.GetComponent<Collider>().enabled = false; 
+        // }else if(!isMoving){
+            cylinderCollision.GetComponent<Collider>().enabled = true;
+
+        }
+        
         
     }
 

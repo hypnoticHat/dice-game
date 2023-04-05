@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ScoringSystem : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ScoringSystem : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // collectSound.Play();
-        theScore += 1;
+        theScore += Convert.ToInt32(scoreText.text) + 1;
         scoreText.text = theScore.ToString();
         Destroy(gameObject);
         UnityEngine.Debug.Log("Ok");
