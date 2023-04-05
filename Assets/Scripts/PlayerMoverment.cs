@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerMoverment : MonoBehaviour
 {
-    // GameObject Player = GameObject.Find("Player");
-    // GameObject Cylinder = Player.transform.GetChild(0).gameObject;
-    // GetComponent<Collider>().enabled = false; 
+
     public GameObject point;
 
     public Route CurrentRoute;
