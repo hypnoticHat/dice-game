@@ -14,6 +14,8 @@ public class PlayerMoverment : MonoBehaviour
     public int steps;
     bool isMoving;
     string currentNode;
+    public GameObject ChanceUI;
+
 
     //geting dice values
     public GameObject Dice;
@@ -100,9 +102,14 @@ public class PlayerMoverment : MonoBehaviour
     void specialNoded(string currenNode) 
     {
         //telephot if player hit this node * need to fix *
-        if (currenNode == "Telephot")
+        switch (currenNode)
         {
-            routePosition = 12;
+            case "Telephot":
+                routePosition = 12;
+                break;
+            case "chance":
+                ChanceUI.SetActive(true);
+                break;
         }
     }
 }
