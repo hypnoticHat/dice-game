@@ -56,9 +56,7 @@ public class PlayerMoverment : MonoBehaviour
   
         }
         if (!isMoving){
-            // point.GetComponent<Collider>().enabled = true;
-        //     cylinderCollision.GetComponent<Collider>().enabled = false; 
-        // }else if(!isMoving){
+
             cylinderCollision.GetComponent<Collider>().enabled = true;
 
         }
@@ -116,19 +114,6 @@ public class PlayerMoverment : MonoBehaviour
     }
 }
 
-    // void OnTriggerEnter(Collider other) {
-    //     if (other.gameObject.CompareTag("Point")) 
-    //     {
-    //         score.AddScore(1);
-    //         Debug.Log("+");
-    //     }       
-    // } 
-    // private void OnCollisionEnter(Collision other) {
-    //     if (other.gameObject.layer == LayerMask.NameToLayer("Point")) 
-    //     {
-    //         score.AddScore(1);
-    //         Debug.Log("+");
-    //     }       
-    // } 
+
 
 
