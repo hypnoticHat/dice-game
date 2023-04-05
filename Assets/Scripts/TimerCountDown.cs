@@ -6,6 +6,7 @@ using TMPro;
 public class TimerCountDown : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
+    public GameObject dice;
     public int secondsLeft = 45;
     public bool takingAway = false;
     // Start is called before the first frame update
@@ -19,6 +20,9 @@ public class TimerCountDown : MonoBehaviour
     {
         if (takingAway == false && secondsLeft > 0){
             StartCoroutine(TimerTake());
+        } else if (secondsLeft == 0){
+            dice.SetActive(false);
+            secondsLeft = 45;
         }
     }
     
