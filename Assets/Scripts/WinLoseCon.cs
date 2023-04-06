@@ -44,38 +44,4 @@ public class WinLoseCon : MonoBehaviour
             scriptHolder.GetComponent<TimerCountDown>().enabled = true;
         }
     }
-
-    /*public void WinOrLose () {
-        if( Convert.ToInt32(scoreText) >= 20 && timeText.text == "00:0"){
-             winCondition.SetActive(true);
-             restartBtn.SetActive(true);
-            timeText.text == "Time";
-         }else if( Convert.ToInt32(scoreText) < 20 && timeText.text == "00:0"){
-             loseCondition.SetActive(true);
-             restartBtn.SetActive(true);
-            timeText.text == "Time";
-         }else if(restartBtn == null){
-             winCondition.SetActive(false);
-             loseCondition.SetActive(false);
-         }
-     }*/
-
-    // public void WinCon(){
-    //     if( Convert.ToInt32(scoreText) >= 20 && timeText.text == "00:0"){
-    //         winCondition.SetActive(true);
-    //         restartBtn.SetActive(true);
-    //     }
-    // } 
-    // public void LoseCon(){
-    //     if( Convert.ToInt32(scoreText) < 20 && timeText.text == "00:0"){
-    //         loseCondition.SetActive(true);
-    //         restartBtn.SetActive(true);
-    //     }
-    // } 
-    // public void Restart(){
-    //     if(restartBtn == null){
-    //         winCondition.SetActive(false);
-    //         loseCondition.SetActive(false);
-    //     }
-    // }
 }

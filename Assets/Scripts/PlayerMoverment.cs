@@ -56,9 +56,7 @@ public class PlayerMoverment : MonoBehaviour
   
         }
         if (!isMoving){
-            // point.GetComponent<Collider>().enabled = true;
-        //     cylinderCollision.GetComponent<Collider>().enabled = false; 
-        // }else if(!isMoving){
+
             cylinderCollision.GetComponent<Collider>().enabled = true;
 
         }
