@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -15,9 +13,9 @@ public class NewScore : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        UnityEngine.Debug.Log(" Collider is Working ");
         if (other.gameObject.tag == "Point"){
             score ++;
-        }   
+            Destroy(other.gameObject);
+        }
     }
 }

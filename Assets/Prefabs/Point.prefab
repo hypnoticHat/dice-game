@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1743410503162101536}
   - component: {fileID: 1743410503162101539}
   - component: {fileID: 1743410503162101538}
-  - component: {fileID: 1743410503162101537}
   - component: {fileID: 1743410503162101542}
   m_Layer: 7
   m_Name: Point
@@ -99,20 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1743410503162101537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743410503162101564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f42bb0bfa2ff8545a25d604735f6f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  theScore: 0
 --- !u!54 &1743410503162101542
 Rigidbody:
   m_ObjectHideFlags: 0

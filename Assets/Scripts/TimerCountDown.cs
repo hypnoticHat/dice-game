@@ -8,7 +8,9 @@ public class TimerCountDown : MonoBehaviour
     public TextMeshProUGUI timeText;
     public GameObject dice;
     public int secondsLeft = 45;
-    public bool takingAway = false;
+    public bool takingAway = true;
+    public bool stop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,15 @@ public class TimerCountDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (takingAway == false && secondsLeft > 0){
+        if (takingAway == false && secondsLeft > 0 && !stop){
             StartCoroutine(TimerTake());
         } else if (secondsLeft == 0){
-            dice.SetActive(false);
             secondsLeft = 45;
+            dice.GetComponent<DiceRoll>().enabled = false;
+        }
+        else
+        {
+            return;
         }
     }
     
@@ -32,8 +38,16 @@ public class TimerCountDown : MonoBehaviour
         secondsLeft -= 1;
         timeText.text = "00:" + secondsLeft.ToString();
         takingAway = false;
+
+        //make dice onlly work when time count down
+        dice.GetComponent<DiceRoll>().enabled = true;
+
     }
 
-    
+    //set bool to button start (fixed the time start countdown at very start)
+    public void setBool()
+    {
+        takingAway = false;
+    }
 
 }

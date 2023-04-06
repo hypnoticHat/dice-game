@@ -17,7 +17,7 @@ public class Control : MonoBehaviour
         
     }
     public void ResetTheGame(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         print("The button is working");
     }
 }

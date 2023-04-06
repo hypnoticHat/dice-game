@@ -6,23 +6,25 @@ public class PlayerMoverment : MonoBehaviour
 {
     public GameObject cylinderCollision;
     // public GameObject point;
-
+    public int EndTelephot;
     public Route CurrentRoute;
     int routePosition;
     public int steps;
     bool isMoving;
     string currentNode;
     public GameObject ChanceUI;
-
+    public NewScore NewScore;
 
     //geting dice values
     public GameObject Dice;
+    public TimerCountDown TimerCountDown;
     DiceRoll DiceRoll;
 
     private void Start()
     {
         DiceRoll = Dice.GetComponent<DiceRoll>();
-         
+        //stop dice roll from start of the gamme
+        Dice.GetComponent<DiceRoll>().enabled = false;
 
     }
 
@@ -33,9 +35,7 @@ public class PlayerMoverment : MonoBehaviour
         if(DiceRoll.GetedValue && !isMoving)
         {
             
-
             steps = DiceRoll.diceValue;
-            Debug.Log("run "+steps);
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
 
@@ -87,6 +87,11 @@ public class PlayerMoverment : MonoBehaviour
                 
             yield return new WaitForSeconds(0.1f);
             steps--;
+            //give player 10 score if go thru finish line
+            if (routePosition == 0)
+            {
+                NewScore.score += 10;
+            }
         }
         currentNode = CurrentRoute.childNodeList[routePosition].ToString();
         isMoving = false;
@@ -106,29 +111,19 @@ public class PlayerMoverment : MonoBehaviour
         //telephot if player hit this node * need to fix *
         switch (currenNode)
         {
+            //telephot player
             case "Telephot":
-                routePosition = 12;
+                routePosition += EndTelephot;
                 break;
+            //question
             case "chance":
                 ChanceUI.SetActive(true);
+                //stop using dice
+                Dice.GetComponent<DiceRoll>().enabled = false;
+                TimerCountDown.stop = true;
                 break;
         }
     }
 }
-
-    // void OnTriggerEnter(Collider other) {
-    //     if (other.gameObject.CompareTag("Point")) 
-    //     {
-    //         score.AddScore(1);
-    //         Debug.Log("+");
-    //     }       
-    // } 
-    // private void OnCollisionEnter(Collision other) {
-    //     if (other.gameObject.layer == LayerMask.NameToLayer("Point")) 
-    //     {
-    //         score.AddScore(1);
-    //         Debug.Log("+");
-    //     }       
-    // } 
 
 
