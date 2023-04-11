@@ -6,7 +6,13 @@ public class NewScore : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreUI;
 
-    // Update is called once per frame
+    string tag = "Point"; // your tag
+    GameObject[] taggedObjects;
+    public void Start() {
+        taggedObjects = GameObject.FindGameObjectsWithTag(tag);
+    }
+
+
     void Update()
     {
         scoreUI.text = score.ToString();
@@ -15,7 +21,12 @@ public class NewScore : MonoBehaviour
     {
         if (other.gameObject.tag == "Point"){
             score ++;
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+        }else if (other.gameObject.tag == "Start"){
+            foreach (GameObject tagged in taggedObjects){
+                tagged.SetActive(true); // or true
+            }
         }
     }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMoverment : MonoBehaviour
 {
     public GameObject cylinderCollision;
-    // public GameObject point;
+
     public int EndTelephot;
     public Route CurrentRoute;
     int routePosition;
@@ -42,16 +42,22 @@ public class PlayerMoverment : MonoBehaviour
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
 
+            isMoving = true;
+            print("False");
+            Dice.GetComponent<DiceRoll>().enabled = false;
+
+
             cylinderCollision.GetComponent<Collider>().enabled = false;
             
   
-        }
-        if (!isMoving){
-            // point.GetComponent<Collider>().enabled = true;
-        //     cylinderCollision.GetComponent<Collider>().enabled = false; 
-        // }else if(!isMoving){
-            cylinderCollision.GetComponent<Collider>().enabled = true;
+        }else if (isMoving==true){
 
+            cylinderCollision.GetComponent<Collider>().enabled = true;
+            Dice.GetComponent<DiceRoll>().enabled = false;
+            Dice.SetActive(false);
+        }else if (isMoving == false){
+            Dice.GetComponent<DiceRoll>().enabled = true;
+            Dice.SetActive(true);
         }
         
         
@@ -64,7 +70,7 @@ public class PlayerMoverment : MonoBehaviour
         {
             yield break;
         }
-        isMoving = true;
+        // isMoving = true;
 
         //zoom camera in
         //GameManager.zoomCamIn();

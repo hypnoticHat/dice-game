@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Score
   - Point
+  - Start
   layers:
   - Default
   - TransparentFX
