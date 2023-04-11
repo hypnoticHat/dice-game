@@ -21,6 +21,7 @@ public class DiceRoll : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         rb.useGravity = false;
+
     }
 
     void Update()   

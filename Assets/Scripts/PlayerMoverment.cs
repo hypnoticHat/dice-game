@@ -8,18 +8,19 @@ public class PlayerMoverment : MonoBehaviour
 
     public int EndTelephot;
     public Route CurrentRoute;
-    int routePosition;
     public int steps;
-    bool isMoving;
-    string currentNode;
     public GameObject ChanceUI;
     public NewScore NewScore;
     public GameManager GameManager;
+    public SoundEffect soundEffect;
+
+    int routePosition;
+    bool isMoving;
+    string currentNode;
 
     //geting dice values
     public GameObject Dice;
     public TimerCountDown TimerCountDown;
-
     DiceRoll DiceRoll;
     
 
@@ -27,7 +28,7 @@ public class PlayerMoverment : MonoBehaviour
     {
         DiceRoll = Dice.GetComponent<DiceRoll>();
         //stop dice roll from start of the gamme
-        Dice.GetComponent<DiceRoll>().enabled = false;
+        DiceRoll.enabled = false;
 
     }
 
@@ -42,25 +43,10 @@ public class PlayerMoverment : MonoBehaviour
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
 
-            isMoving = true;
-            print("False");
-            Dice.GetComponent<DiceRoll>().enabled = false;
-
-
-            cylinderCollision.GetComponent<Collider>().enabled = false;
             
   
-        }else if (isMoving==true){
-
-            cylinderCollision.GetComponent<Collider>().enabled = true;
-            Dice.GetComponent<DiceRoll>().enabled = false;
-            Dice.SetActive(false);
-        }else if (isMoving == false){
-            Dice.GetComponent<DiceRoll>().enabled = true;
-            Dice.SetActive(true);
         }
-        
-        
+       
     }
 
     //create movement for frame
@@ -70,7 +56,7 @@ public class PlayerMoverment : MonoBehaviour
         {
             yield break;
         }
-        // isMoving = true;
+        isMoving = true;
 
         //zoom camera in
         //GameManager.zoomCamIn();
@@ -78,6 +64,11 @@ public class PlayerMoverment : MonoBehaviour
         //move player 
         while(steps > 0)
         {
+            //stop roll dice
+            DiceRoll.enabled = false;
+            //cylinderCollision.GetComponent<Collider>().enabled = true;
+
+            //add new postition to move
             routePosition++;
             routePosition %= CurrentRoute.childNodeList.Count;
             Vector3 nextPos = CurrentRoute.childNodeList[routePosition].position;
@@ -91,9 +82,12 @@ public class PlayerMoverment : MonoBehaviour
             //give player 10 score if go thru finish line
             if (routePosition == 0)
             {
+                soundEffect.src.clip = soundEffect.passFinishSound;
+                soundEffect.src.Play();
                 NewScore.score += 10;
             }
         }
+
         //make camera zoom out
         //GameManager.zoomCamOut();
         //return current node name
@@ -101,6 +95,8 @@ public class PlayerMoverment : MonoBehaviour
         isMoving = false;
         specialNoded(currentNode.Split(" ")[0]);
 
+        //alow roll again
+        DiceRoll.enabled = true;
     }
 
     //move to the position base on dice
@@ -117,15 +113,28 @@ public class PlayerMoverment : MonoBehaviour
         {
             //telephot player
             case "Telephot":
+                soundEffect.src.clip = soundEffect.hitJumpNode;
+                soundEffect.src.Play();
+
                 routePosition += EndTelephot;
                 break;
             //question
             case "chance":
                 ChanceUI.SetActive(true);
+                soundEffect.src.clip = soundEffect.hitChanceNode;
+                soundEffect.src.Play();
                 //stop using dice
                 TimerCountDown.stop = true;
                 Dice.SetActive(false);
                 break;
+            //go back 3 node
+            case "BackNode":
+                routePosition -= 4;
+                steps = 1;
+                StartCoroutine(Move());
+                break;
+            
+
         }
     }
 }

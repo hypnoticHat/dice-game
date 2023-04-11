@@ -22,16 +22,16 @@ public class WinLoseCon : MonoBehaviour
             winCondition.SetActive(true);
             restartBtn.SetActive(true);
             timeText.text = "Time Over";
-            dice.SetActive(false);
             scriptHolder.GetComponent<TimerCountDown>().enabled = false;
             scriptHolder.SetActive(false);
+            dice.SetActive(false);
         }else if( Convert.ToInt32(scoreText.text) < 20 && timeText.text == "00:0"){
             loseCondition.SetActive(true);
             restartBtn.SetActive(true);
             timeText.text = "Time Over";
-            dice.SetActive(false);
             scriptHolder.GetComponent<TimerCountDown>().enabled = false;
             scriptHolder.SetActive(false);
+            dice.SetActive(false);
         }else if(restartBtn.activeInHierarchy == false){
             winCondition.SetActive(false);
             loseCondition.SetActive(false);

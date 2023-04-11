@@ -6,10 +6,12 @@ public class NewScore : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreUI;
 
-    string tag = "Point"; // your tag
+    public AudioSource src;
+    public AudioClip collectCoinSound;
+    //string tag = "Point"; // your tag why this here
     GameObject[] taggedObjects;
     public void Start() {
-        taggedObjects = GameObject.FindGameObjectsWithTag(tag);
+        taggedObjects = GameObject.FindGameObjectsWithTag("Point");
     }
 
 
@@ -20,6 +22,10 @@ public class NewScore : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Point"){
+            //play sound
+            src.clip = collectCoinSound;
+            src.Play();
+            //add score
             score ++;
             other.gameObject.SetActive(false);
         }else if (other.gameObject.tag == "Start"){
