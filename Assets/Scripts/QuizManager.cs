@@ -28,7 +28,6 @@ public class QuizManager : MonoBehaviour
         //create a new question
         QuestionUI.SetActive(false);
         //allow using dice
-        Dice.GetComponent<DiceRoll>().enabled = true;
         Dice.SetActive(true);
         GenerateQuestion();
         time.stop = false;

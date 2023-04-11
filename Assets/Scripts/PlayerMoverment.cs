@@ -14,11 +14,14 @@ public class PlayerMoverment : MonoBehaviour
     string currentNode;
     public GameObject ChanceUI;
     public NewScore NewScore;
+    public GameManager GameManager;
 
     //geting dice values
     public GameObject Dice;
     public TimerCountDown TimerCountDown;
+
     DiceRoll DiceRoll;
+    
 
     private void Start()
     {
@@ -40,23 +43,13 @@ public class PlayerMoverment : MonoBehaviour
             DiceRoll.GetedValue = false;
 
             cylinderCollision.GetComponent<Collider>().enabled = false;
-            // if (point != null){
-            //     point.GetComponent<Collider>().enabled = false; 
-            // }
             
-            //not for loot route
-            /*if (routePosition + steps < CurrentRoute.childNodeList.Count)
-            {
-                StartCoroutine(Move());
-            }
-            else
-            {
-                Debug.Log("Roll number is to high");
-            }*/
   
         }
         if (!isMoving){
-
+            // point.GetComponent<Collider>().enabled = true;
+        //     cylinderCollision.GetComponent<Collider>().enabled = false; 
+        // }else if(!isMoving){
             cylinderCollision.GetComponent<Collider>().enabled = true;
 
         }
@@ -73,6 +66,10 @@ public class PlayerMoverment : MonoBehaviour
         }
         isMoving = true;
 
+        //zoom camera in
+        //GameManager.zoomCamIn();
+
+        //move player 
         while(steps > 0)
         {
             routePosition++;
@@ -91,10 +88,13 @@ public class PlayerMoverment : MonoBehaviour
                 NewScore.score += 10;
             }
         }
+        //make camera zoom out
+        //GameManager.zoomCamOut();
+        //return current node name
         currentNode = CurrentRoute.childNodeList[routePosition].ToString();
         isMoving = false;
-        //return current node name
         specialNoded(currentNode.Split(" ")[0]);
+
     }
 
     //move to the position base on dice
@@ -117,8 +117,8 @@ public class PlayerMoverment : MonoBehaviour
             case "chance":
                 ChanceUI.SetActive(true);
                 //stop using dice
-                Dice.GetComponent<DiceRoll>().enabled = false;
                 TimerCountDown.stop = true;
+                Dice.SetActive(false);
                 break;
         }
     }

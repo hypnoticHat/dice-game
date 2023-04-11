@@ -7,13 +7,14 @@ public class DiceRoll : MonoBehaviour
     bool hasLanded;
     bool thrown;
     Vector3 accelerationDir;
-    public bool GetedValue;
-    public TMP_Text DiceNum;
-
-    public DiceSide[] diceSides;
     Vector3 initPosition;
 
+
+    public bool GetedValue;
+    public TMP_Text DiceNum;
     public int diceValue;
+    public DiceSide[] diceSides;
+
     // Update is called once per frame
     private void Start()
     {
