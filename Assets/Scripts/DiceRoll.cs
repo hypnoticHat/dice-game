@@ -9,15 +9,25 @@ public class DiceRoll : MonoBehaviour
     Vector3 accelerationDir;
     Vector3 initPosition;
 
-
+    
     public bool GetedValue;
     public TMP_Text DiceNum;
     public int diceValue;
     public DiceSide[] diceSides;
 
+    //for switch dice material
+    public Material[] materials;
+    int numMaterial =0;
+    Renderer rend;
+
     // Update is called once per frame
     private void Start()
     {
+        //get dice material
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+        
+        
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         rb.useGravity = false;
@@ -26,6 +36,8 @@ public class DiceRoll : MonoBehaviour
 
     void Update()   
     {
+        rend.sharedMaterial = materials[numMaterial];
+
         //geting shake phone motion
         accelerationDir = Input.acceleration;
 
@@ -99,6 +111,18 @@ public class DiceRoll : MonoBehaviour
                 DiceNum.text = diceValue.ToString();
                 GetedValue = true;
             }
+        }
+    }
+
+    public void nextColor()
+    {
+        if(numMaterial < (materials.Length-1))
+        {
+            numMaterial++;
+        }
+        else
+        {
+            numMaterial= 0;
         }
     }
 }
