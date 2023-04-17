@@ -52,11 +52,13 @@ public class Route : MonoBehaviour
     //create point in map for each node created
     public void SpawnPoint()
     {
-        for (int i = 0; i < childNodeList.Count; i++)
+        for (int i = 1; i < childNodeList.Count; i++)
         {
             //create point right node position + 0.5 in Y
-            Instantiate(point, childNodeList[i].position + new Vector3(0,0.5f,0), Quaternion.identity);
-
+            if (i % 4 == 0)
+            {
+               Instantiate(point, childNodeList[i].position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            }
         }
     }
 }

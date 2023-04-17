@@ -39,7 +39,7 @@ public class AnswScript : MonoBehaviour
         correctUI.SetActive(true);
         yield return new WaitForSeconds(1);
         correctUI.SetActive(false);
-        newScore.score += 10;
+        newScore.score += 5;
         quizManager.correct();
 
     }

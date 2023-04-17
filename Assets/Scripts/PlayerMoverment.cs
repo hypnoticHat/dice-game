@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerMoverment : MonoBehaviour
 {
@@ -13,10 +15,13 @@ public class PlayerMoverment : MonoBehaviour
     public NewScore NewScore;
     public GameManager GameManager;
     public SoundEffect soundEffect;
+    public Slider ShakeChallen;
+    public GameObject sliderChallen;
 
     int routePosition;
     bool isMoving;
     string currentNode;
+    public int energy = 5;
 
     //geting dice values
     public GameObject Dice;
@@ -26,6 +31,7 @@ public class PlayerMoverment : MonoBehaviour
 
     private void Start()
     {
+
         DiceRoll = Dice.GetComponent<DiceRoll>();
         //stop dice roll from start of the gamme
         DiceRoll.enabled = false;
@@ -42,11 +48,9 @@ public class PlayerMoverment : MonoBehaviour
             steps = DiceRoll.diceValue;
             StartCoroutine(Move());
             DiceRoll.GetedValue = false;
-
-            
   
         }
-       
+        sNode();
     }
 
     //create movement for frame
@@ -133,9 +137,51 @@ public class PlayerMoverment : MonoBehaviour
                 steps = 1;
                 StartCoroutine(Move());
                 break;
-            
+            //shake challen
+            case "node":
+                StartCoroutine(shake());
+                break;
 
         }
+    }
+
+    void sNode()
+    {
+
+        if (Input.acceleration.sqrMagnitude >= 5f || Input.GetKeyDown(KeyCode.Space))
+        {
+            energy++;
+            ShakeChallen.value = energy;
+            if (energy == 20)
+            {
+                sliderChallen.SetActive(false);
+                Dice.SetActive(true);
+            }
+            else if (energy < 0)
+            {
+                energy = 0;
+            }
+
+        }
+    }
+
+    IEnumerator shake()
+    {
+        sliderChallen.SetActive(true);
+        Dice.SetActive(false);
+        int time = 0;
+        int maxtime = 10;
+        while (time < maxtime)
+        {
+            yield return new WaitForSeconds(1);
+            time ++;
+            energy -= 1;
+            ShakeChallen.value = energy;
+            Debug.Log(time);
+        }
+        sliderChallen.SetActive(false);
+        Dice.SetActive(true);
+
     }
 }
 

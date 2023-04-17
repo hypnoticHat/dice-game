@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 
 public class TimerCountDown : MonoBehaviour
 {
+    //time slider
+    public Slider slider;
+
+    //time text
     public TextMeshProUGUI timeText;
     public GameObject dice;
     public int secondsLeft = 45;
@@ -15,11 +21,13 @@ public class TimerCountDown : MonoBehaviour
     void Start()
     {
         timeText.text = "00:" + secondsLeft.ToString();
+        slider.maxValue = secondsLeft;//make slider max values = max time
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (takingAway == false && secondsLeft > 0 && !stop){
             StartCoroutine(TimerTake());
         } else if (secondsLeft == 0){
@@ -30,12 +38,14 @@ public class TimerCountDown : MonoBehaviour
         {
             return;
         }
+        
     }
     
     IEnumerator TimerTake(){
         takingAway = true;
         yield return new WaitForSeconds(1);
         secondsLeft -= 1;
+        slider.value = secondsLeft; //uodate to slider
         timeText.text = "00:" + secondsLeft.ToString();
         takingAway = false;
 

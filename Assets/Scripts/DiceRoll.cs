@@ -16,16 +16,16 @@ public class DiceRoll : MonoBehaviour
     public DiceSide[] diceSides;
 
     //for switch dice material
-    public Material[] materials;
+    /*public Material[] materials;
     int numMaterial =0;
-    Renderer rend;
+    Renderer rend;*/
 
     // Update is called once per frame
     private void Start()
     {
         //get dice material
-        rend = GetComponent<Renderer>();
-        rend.enabled = true;
+        /*rend = GetComponent<Renderer>();
+        rend.enabled = true;*/
         
         
         rb = GetComponent<Rigidbody>();
@@ -36,7 +36,7 @@ public class DiceRoll : MonoBehaviour
 
     void Update()   
     {
-        rend.sharedMaterial = materials[numMaterial];
+        /*rend.sharedMaterial = materials[numMaterial];*/
 
         //geting shake phone motion
         accelerationDir = Input.acceleration;
@@ -114,7 +114,7 @@ public class DiceRoll : MonoBehaviour
         }
     }
 
-    public void nextColor()
+   /* public void nextColor()
     {
         if(numMaterial < (materials.Length-1))
         {
@@ -124,5 +124,5 @@ public class DiceRoll : MonoBehaviour
         {
             numMaterial= 0;
         }
-    }
+    }*/
 }
