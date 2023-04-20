@@ -12,7 +12,6 @@ public class QuizManager : MonoBehaviour
     public GameObject Dice;
 
     public TMP_Text text;
-    public TimerCountDown time;
 
     private void Start()
     {
@@ -30,7 +29,6 @@ public class QuizManager : MonoBehaviour
         //allow using dice
         Dice.SetActive(true);
         GenerateQuestion();
-        time.stop = false;
     }
 
     //create a loop to set all answer 

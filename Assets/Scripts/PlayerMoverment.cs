@@ -50,7 +50,7 @@ public class PlayerMoverment : MonoBehaviour
             DiceRoll.GetedValue = false;
   
         }
-        sNode();
+        //sNode();
     }
 
     //create movement for frame
@@ -88,7 +88,7 @@ public class PlayerMoverment : MonoBehaviour
             {
                 soundEffect.src.clip = soundEffect.passFinishSound;
                 soundEffect.src.Play();
-                NewScore.score += 10;
+                NewScore.score += 5;
             }
         }
 
@@ -128,7 +128,6 @@ public class PlayerMoverment : MonoBehaviour
                 soundEffect.src.clip = soundEffect.hitChanceNode;
                 soundEffect.src.Play();
                 //stop using dice
-                TimerCountDown.stop = true;
                 Dice.SetActive(false);
                 break;
             //go back 3 node
@@ -138,10 +137,19 @@ public class PlayerMoverment : MonoBehaviour
                 StartCoroutine(Move());
                 break;
             //shake challen
-            case "node":
+            case "nodess":
                 StartCoroutine(shake());
                 break;
+            //go foward
+            case "Forward":
+                routePosition += 3;
+                steps = 1;
+                StartCoroutine(Move());
+                break;
+            case "node":
+                TimerCountDown.secondsLeft += 5;
 
+                break;
         }
     }
 
