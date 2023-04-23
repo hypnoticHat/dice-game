@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AnswScript : MonoBehaviour
 {
+    // public TextMeshProUGUI scoreUI;
+    // int ansPoint = 5;
+    public ScoreManager scoreManager;
+
     public bool isCorrect = false;
     public QuizManager quizManager;
-    public NewScore newScore;
+    // public NewScore newScore;
     public GameObject correctUI;
     public GameObject inCorrectUI;
 
@@ -39,7 +44,10 @@ public class AnswScript : MonoBehaviour
         correctUI.SetActive(true);
         yield return new WaitForSeconds(1);
         correctUI.SetActive(false);
-        newScore.score += 5;
+        // scoreUI.text += ansPoint.ToString();
+        // newScore.score += 5;
+        scoreManager.score += 5;
+        print("++5");
         quizManager.correct();
 
     }

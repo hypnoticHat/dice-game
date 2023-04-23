@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
 
-public class PlayerMoverment : MonoBehaviour
+public class PlayerMoverment : NetworkBehaviour
 {
+    [SerializeField] private float posSpawn = 0.5f;
+
     public GameObject cylinderCollision;
 
     public int EndTelephot;
@@ -17,6 +20,7 @@ public class PlayerMoverment : MonoBehaviour
     public SoundEffect soundEffect;
     public Slider ShakeChallen;
     public GameObject sliderChallen;
+    public Collider boxCollider;
 
     int routePosition;
     bool isMoving;
@@ -28,9 +32,23 @@ public class PlayerMoverment : MonoBehaviour
     public TimerCountDown TimerCountDown;
     DiceRoll DiceRoll;
     
+    public override void OnNetworkSpawn(){
+        transform.position = new Vector3(Random.Range(6+posSpawn, 6-posSpawn), 0, Random.Range(-7+posSpawn, -7-posSpawn));
+    }
 
     private void Start()
     {
+        CurrentRoute = GameObject.Find("Route").GetComponent<Route>();
+        ChanceUI = GameObject.Find("QuestionUI");
+        NewScore = GetComponent<NewScore>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        soundEffect = GameObject.Find("SoundManager").GetComponent<SoundEffect>();
+        ShakeChallen = GameObject.Find("ShakeChalleng").GetComponent<Slider>();
+        sliderChallen = GameObject.Find("ShakeChalleng");
+        Dice = GameObject.Find("Dice");
+        TimerCountDown = GameObject.Find("GameManager").GetComponent<TimerCountDown>();
+        // ChanceUI.SetActive(false);
+        // sliderChallen.SetActive(false);
 
         DiceRoll = Dice.GetComponent<DiceRoll>();
         //stop dice roll from start of the gamme
@@ -41,6 +59,7 @@ public class PlayerMoverment : MonoBehaviour
 
     private void Update()
     {
+        if(!IsOwner) return;
         //geting values from dice and start moving base on those values
         if(DiceRoll.GetedValue && !isMoving)
         {
@@ -190,6 +209,15 @@ public class PlayerMoverment : MonoBehaviour
         sliderChallen.SetActive(false);
         Dice.SetActive(true);
 
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player"){
+            boxCollider.enabled = false;
+        }else if (other.gameObject.tag != "Player"){
+            boxCollider.enabled = true;
+        }
     }
 }
 

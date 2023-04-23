@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7440547929997901554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7440547929997901556}
+  - component: {fileID: 7440547929997901555}
+  - component: {fileID: 7440547929997901557}
+  - component: {fileID: 7440547929997901558}
+  - component: {fileID: -8227045400635224197}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7440547929997901556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440547929997901554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 459.42035, y: 210.32094, z: -10.11203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7440547929997901555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440547929997901554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554b5de102e6b0546ad4efaf3f1f7d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QnA:
+  - Question: 2 + 2 x 2 = ?
+    Answers:
+    - 2
+    - 4
+    - 6
+    - 8
+    CorrectAnswer: 1
+  - Question: "Con m\xE8o trong ti\u1EBFng Nh\u1EADt l\xE0:"
+    Answers:
+    - Neko
+    - "Kh\xF4ng c\xE2u n\xE0o \u0111\xFAng"
+    - Hyou
+    - "T\u1EA5t c\u1EA3 \u0111\u1EC1u \u0111\xFAng"
+    CorrectAnswer: 3
+  - Question: "Gi\xE1 tr\u1ECB c\u1EE7a 3^4 l\xE0 bao nhi\xEAu?"
+    Answers:
+    - 9
+    - 12
+    - 27
+    - 81
+    CorrectAnswer: 3
+  - Question: "Gi\u1EA3i ph\u01B0\u01A1ng tr\xECnh sau: 2x + 3 = 11"
+    Answers:
+    - x = 4
+    - x = 5
+    - x = 6
+    - x = 7
+    CorrectAnswer: 0
+  - Question: "T\xEDnh di\u1EC7n t\xEDch h\xECnh ch\u1EEF nh\u1EADt c\xF3 chi\u1EC1u
+      d\xE0i 6 v\xE0 chi\u1EC1u r\u1ED9ng 4."
+    Answers:
+    - 10
+    - 16
+    - 20
+    - 24
+    CorrectAnswer: 3
+  - Question: "T\xEDnh chu vi h\xECnh tr\xF2n c\xF3 b\xE1n k\xEDnh 5."
+    Answers:
+    - 10pi
+    - 15pi
+    - 20pi
+    - 25pi
+    CorrectAnswer: 3
+  - Question: "Trong th\u1EDDi k\u1EF3 Trung \u0111\u1EA1i, tri\u1EC1u \u0111\u1EA1i
+      n\xE0o \u0111\u1EB7t n\u1EC1n m\xF3ng cho s\u1EF1 ph\xE1t tri\u1EC3n v\u0103n
+      ho\xE1, gi\xE1o d\u1EE5c c\u1EE7a \u0111\u1EA5t n\u01B0\u1EDBc Vi\u1EC7t Nam?"
+    Answers:
+    - "\u0110inh"
+    - "L\xFD"
+    - "Tr\u1EA7n"
+    - "L\xEA"
+    CorrectAnswer: 1
+  - Question: "Ai l\xE0 ng\u01B0\u1EDDi l\xE3nh \u0111\u1EA1o cu\u1ED9c kh\u1EDFi
+      ngh\u0129a Lam S\u01A1n (1418-1427)?"
+    Answers:
+    - "L\xEA L\u1EE3i"
+    - "Nguy\xEAn Hu\u1EC7"
+    - "Tr\u1EA7n Th\u1EE7 \u0110\u1ED9"
+    - "Nguy\u1EC5n Tr\xE3i"
+    CorrectAnswer: 3
+  - Question: "1kg s\u1EAFt v\u1EDBi 1kg b\xF4ng b\xEAn n\xE0o n\u1EB7ng h\u01A1n?"
+    Answers:
+    - "B\xF4ng"
+    - "S\u1EAFt"
+    - "B\u1EB1ng nhau"
+    - "Kh\xF4ng b\u1EB1ng nhau"
+    CorrectAnswer: 2
+  - Question: "Vua n\xE0o \u0111\xE3 th\u1EF1c hi\u1EC7n vi\u1EC7c x\xE2y d\u1EF1ng
+      th\xE0nh ph\u1ED1 Th\u0103ng Long (nay l\xE0 H\xE0 N\u1ED9i) v\xE0o \u0111\u1EA7u
+      th\u1EBF k\u1EF7 th\u1EE9 11?"
+    Answers:
+    - "\u0110inh Ti\xEAn Ho\xE0ng"
+    - "L\xFD C\xF4ng U\u1EA9n"
+    - "L\xEA \u0110\u1EA1i H\xE0nh"
+    - "Tr\u1EA7n Th\xE1i T\xF4ng"
+    CorrectAnswer: 1
+  - Question: "Ai l\xE0 ng\u01B0\u1EDDi \u0111\xE3 l\xE3nh \u0111\u1EA1o cu\u1ED9c
+      Kh\u1EDFi ngh\u0129a Nam K\u1EF3 (1940-1945)?"
+    Answers:
+    - "Nguy\u1EC5n \xC1i Qu\u1ED1c"
+    - "H\u1ED3 Ch\xED Minh"
+    - "Tr\u01B0\u01A1ng C\xF4ng \u0110\u1ECBnh"
+    - "Phan \u0110\u0103ng L\u01B0u"
+    CorrectAnswer: 2
+  - Question: "C\xF3 4 con chim tr\xEAn c\xE2y, th\u1EE3 s\u0103n b\u1EAFn c\xE1i
+      \u0111\xF9ng 1 c\xE1i h\u1ECFi c\xF2n bao nhi\xEAu con chim"
+    Answers:
+    - 0
+    - 1
+    - 3
+    - 4
+    CorrectAnswer: 0
+  - Question: "Ai l\xE0 ng\u01B0\u1EDDi s\xE1ng l\u1EADp tri\u1EBFt h\u1ECDc Plato?"
+    Answers:
+    - Aristotle
+    - Socrates
+    - Plato
+    - Confucius
+    CorrectAnswer: 2
+  - Question: "Trong tri\u1EBFt h\u1ECDc, h\xE0nh \u0111\u1ED9ng \u0111\u1EA1o \u0111\u1EE9c
+      c\u1EE7a ch\xFAng ta \u0111\u01B0\u1EE3c \u0111\u1ECBnh h\xECnh b\u1EDFi:"
+    Answers:
+    - "T\xEDnh c\xE1ch t\u1EF1 nhi\xEAn c\u1EE7a con ng\u01B0\u1EDDi"
+    - " X\xE3 h\u1ED9i m\xE0 con ng\u01B0\u1EDDi s\u1ED1ng trong \u0111\xF3"
+    - "L\xFD tr\xED c\u1EE7a con ng\u01B0\u1EDDi"
+    - "T\xF4n gi\xE1o"
+    CorrectAnswer: 2
+  - Question: "Trong tri\u1EBFt h\u1ECDc \u0110\xF4ng ph\u01B0\u01A1ng, nguy\xEAn
+      t\u1EAFc trung t\xE2m c\u1EE7a cu\u1ED9c s\u1ED1ng l\xE0:"
+    Answers:
+    - "T\xF4n gi\xE1o"
+    - " V\u0103n h\xF3a"
+    - "\u0110\u1EA1o \u0111\u1EE9c"
+    - "\u0110i\u1EC1u l\u1EC7 t\u1EF1 nhi\xEAn"
+    CorrectAnswer: 3
+  options:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentQuestion: 0
+  QuestionUI: {fileID: 0}
+  Dice: {fileID: 0}
+  text: {fileID: 0}
+--- !u!114 &7440547929997901557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440547929997901554}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ee7880573646b41965a2c482c66ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  timeText: {fileID: 0}
+  dice: {fileID: 0}
+  secondsLeft: 45
+  takingAway: 1
+  stop: 0
+--- !u!114 &7440547929997901558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440547929997901554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65d9fd3ad22164f95c00a5d7bb7e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8227045400635224197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440547929997901554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
