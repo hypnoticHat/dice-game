@@ -43,8 +43,8 @@ public class PlayerMoverment : NetworkBehaviour
         NewScore = GetComponent<NewScore>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         soundEffect = GameObject.Find("SoundManager").GetComponent<SoundEffect>();
-        ShakeChallen = GameObject.Find("ShakeChalleng").GetComponent<Slider>();
-        sliderChallen = GameObject.Find("ShakeChalleng");
+        /*ShakeChallen = GameObject.Find("ShakeChalleng").GetComponent<Slider>();
+        sliderChallen = GameObject.Find("ShakeChalleng");*/
         Dice = GameObject.Find("Dice");
         TimerCountDown = GameObject.Find("GameManager").GetComponent<TimerCountDown>();
         // ChanceUI.SetActive(false);
