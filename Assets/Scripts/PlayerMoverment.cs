@@ -59,17 +59,18 @@ public class PlayerMoverment : NetworkBehaviour
 
     private void Update()
     {
-        if(!IsOwner) return;
-        //geting values from dice and start moving base on those values
-        if(DiceRoll.GetedValue && !isMoving)
-        {
-            
-            steps = DiceRoll.diceValue;
-            StartCoroutine(Move());
-            DiceRoll.GetedValue = false;
-  
+        if(!PauseMenu.isPaused){
+            if(!IsOwner) return;
+            //geting values from dice and start moving base on those values
+            if(DiceRoll.GetedValue && !isMoving)
+            {
+                
+                steps = DiceRoll.diceValue;
+                StartCoroutine(Move());
+                DiceRoll.GetedValue = false;
+    
+            }
         }
-        //sNode();
     }
 
     //create movement for frame
