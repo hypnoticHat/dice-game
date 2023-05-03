@@ -8,9 +8,14 @@ public class NetworkUI : MonoBehaviour
 {
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
+    [SerializeField] private Button soloButton;
     // Start is called before the first frame update
     private void Awake()
     {
+        soloButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartHost();
+        });
         hostButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
