@@ -9,7 +9,7 @@ public class NetworkUI : MonoBehaviour
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
     [SerializeField] private Button soloButton;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         soloButton.onClick.AddListener(() =>
@@ -24,6 +24,7 @@ public class NetworkUI : MonoBehaviour
         {
             NetworkManager.Singleton.StartClient();
         });
+
     }
 
 }
